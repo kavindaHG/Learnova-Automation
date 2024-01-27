@@ -2,8 +2,6 @@ package pageObject;
 
 import actionDriver.Action;
 import base.BaseClass;
-import org.checkerframework.checker.index.qual.PolyUpperBound;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -32,16 +30,31 @@ public class LoginPage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[6]/div/span[2]")
     WebElement signUpLink;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[1]/div")
+    WebElement pageTitle;
+
     public LoginPage (){
         PageFactory.initElements(webDriver, this);
     }
 
-    public HomePage login(String userName, String password) throws InterruptedException {
-        Action.type(loginEmail,userName);
-        Action.type(loginPassword,password);
-        Thread.sleep(5000);
-        Action.click(webDriver,loginButton);
-        return new HomePage();
+    public String validateNewURL() {
+        String methodName = "validateNewURL Method";
+        System.out.println(methodName + " Is Called");
+        return webDriver.getCurrentUrl();
+    }
+
+    public String validatePageTitle() {
+        String methodName = "validatePageTitle Method";
+        System.out.println(methodName + " Is Called");
+        return pageTitle.getText();
+    }
+
+    public StudentMyCoursesPage login(String userName, String password) throws InterruptedException {
+        Action.type(loginEmail, userName);
+        Action.type(loginPassword, password);
+        Thread.sleep(3000);
+        Action.click(webDriver, loginButton);
+        return new StudentMyCoursesPage();
     }
 
     public RegistrationPage clickSignUpLink(){

@@ -2,7 +2,6 @@ package testCases;
 
 import base.BaseClass;
 import factoryData.UserFactoryData;
-import model.UserModel;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pageObject.EmailVerificationPage;
@@ -22,8 +21,8 @@ public class RegistrationPageTest extends BaseClass {
     String confirmPassword = UserFactoryData.createNewUserData().getConfirmPassword();
     String expectedEmailAddress = UserFactoryData.createNewUserData().getEmail();
 
-    @Test
-    public void verifyRegistrationPage() throws InterruptedException {
+    @Test(priority = 1)
+    public void verifyRegistrationURL() throws InterruptedException {
 
         homePage = new HomePage();
         loginPage = new LoginPage();
@@ -32,20 +31,34 @@ public class RegistrationPageTest extends BaseClass {
         homePage.clickLoginButton();
         loginPage.clickSignUpLink();
 
-//        Thread.sleep(3000);
         String actualRegistrationPageURL = registrationPage.validateNewURL();
         String expectedRegistrationPageURL = "https://learnova-dev.skillsurf.lk/register";
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(actualRegistrationPageURL, expectedRegistrationPageURL);
+        softAssert.assertAll("Page URL Verification Failed");
+    }
+
+    @Test(priority = 2)
+    public void verifyPageTitle() throws InterruptedException {
+
+        homePage = new HomePage();
+        loginPage = new LoginPage();
+        registrationPage = new RegistrationPage();
+
+        homePage.clickLoginButton();
+        loginPage.clickSignUpLink();
+
         String actualPageTitle = registrationPage.validatePageTitle();
         String expectedPageTitle = "Sign Up";
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(actualRegistrationPageURL, expectedRegistrationPageURL);
         softAssert.assertEquals(actualPageTitle, expectedPageTitle);
-        softAssert.assertAll("Assert Failed");
+        softAssert.assertAll("Page Title Verification Failed");
     }
 
-    @Test(priority = 1)
-    public void newUserRegistrationTest() throws InterruptedException {
+    @Test(priority = 3)
+    public void newUserRegistrationAndEmailVerificationTest() throws InterruptedException {
 
         homePage = new HomePage();
         loginPage = new LoginPage();
@@ -54,7 +67,7 @@ public class RegistrationPageTest extends BaseClass {
 
         homePage.clickLoginButton();
         loginPage.clickSignUpLink();
-        registrationPage.registrationFormFill(
+        registrationPage.registrationFormFillAndEmailVerification(
                 userFirstName, userLastName, expectedEmailAddress, password, confirmPassword);
         Thread.sleep(5000);
 

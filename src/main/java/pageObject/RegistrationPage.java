@@ -2,7 +2,6 @@ package pageObject;
 
 import actionDriver.Action;
 import base.BaseClass;
-import com.beust.ah.A;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -49,11 +48,11 @@ public class RegistrationPage extends BaseClass {
         return pageTitle.getText();
     }
 
-    public EmailVerificationPage registrationFormFill (String firstNameParam,
-                         String lastNameParam,
-                         String emailParam,
-                         String passwordParam,
-                         String confirmPasswordParam) throws InterruptedException {
+    public EmailVerificationPage registrationFormFillAndEmailVerification(String firstNameParam,
+                                                                          String lastNameParam,
+                                                                          String emailParam,
+                                                                          String passwordParam,
+                                                                          String confirmPasswordParam) throws InterruptedException {
         String methodName = "registrationFormFill Method";
         System.out.println(methodName + " Is Called");
         Action.type(firstName, firstNameParam);

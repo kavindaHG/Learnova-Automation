@@ -1,12 +1,7 @@
 package testCases;
 
-import actionDriver.Action;
 import base.BaseClass;
 import factoryData.UserFactoryData;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pageObject.EmailVerificationPage;
@@ -37,7 +32,7 @@ public class EmailVerificationTest extends BaseClass {
 
         homePage.clickLoginButton();
         loginPage.clickSignUpLink();
-        registrationPage.registrationFormFill(
+        registrationPage.registrationFormFillAndEmailVerification(
                 userFirstName, userLastName, expectedEmailAddress, password, confirmPassword);
         Thread.sleep(5000);
 
