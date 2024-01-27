@@ -27,9 +27,6 @@ public class EmailVerificationTest extends BaseClass {
     String confirmPassword = UserFactoryData.createNewUserData().getConfirmPassword();
     String expectedEmailAddress = UserFactoryData.createNewUserData().getEmail();
 
-//    String actualUserRegistrationURL = emailVerificationPage.validateNewURL();
-
-
     @Test
     public void verifyEmailAddress() throws InterruptedException {
 
@@ -44,12 +41,12 @@ public class EmailVerificationTest extends BaseClass {
                 userFirstName, userLastName, expectedEmailAddress, password, confirmPassword);
         Thread.sleep(5000);
 
-        String actualUserRegistrationURL = emailVerificationPage.validateNewURL();
-        String expectedUserRegistrationURL = "https://learnova-dev.skillsurf.lk/verify-email";
+        String actualEmailVerificationURL = emailVerificationPage.validateNewURL();
+        String expectedEmailVerificationURL = "https://learnova-dev.skillsurf.lk/verify-email";
         String actualEmailAddress = emailVerificationPage.validateEmailAddress();
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(actualUserRegistrationURL, expectedUserRegistrationURL);
+        softAssert.assertEquals(actualEmailVerificationURL, expectedEmailVerificationURL);
         softAssert.assertEquals(actualEmailAddress,expectedEmailAddress);
         softAssert.assertAll("Assert Failed");
     }

@@ -30,8 +30,23 @@ public class RegistrationPage extends BaseClass {
     @FindBy(xpath="//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[7]/div/button/div")
     WebElement registerButton;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/div/div")
+    WebElement pageTitle;
+
     public RegistrationPage(){
         PageFactory.initElements(webDriver, this);
+    }
+
+    public String validateNewURL() {
+        String methodName = "validateNewURL Method";
+        System.out.println(methodName + " Is Called");
+        return webDriver.getCurrentUrl();
+    }
+
+    public String validatePageTitle() {
+        String methodName = "validatePageTitle Method";
+        System.out.println(methodName + " Is Called");
+        return pageTitle.getText();
     }
 
     public EmailVerificationPage registrationFormFill (String firstNameParam,
