@@ -46,7 +46,7 @@ public class RegistrationPage extends BaseClass {
         Action.type(emailAddress, emailParam);
         Action.type(password, passwordParam);
         Action.type(confirmPassword, confirmPasswordParam);
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         if (!agreementCheckbox.isSelected()) {
             Action.click(webDriver, agreementCheckbox);

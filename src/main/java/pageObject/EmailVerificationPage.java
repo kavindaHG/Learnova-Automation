@@ -1,5 +1,6 @@
 package pageObject;
 
+import actionDriver.Action;
 import base.BaseClass;
 import factoryData.UserFactoryData;
 import org.openqa.selenium.WebElement;
@@ -11,7 +12,6 @@ public class EmailVerificationPage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/div[2]/div/span/span")
     WebElement userEmailAddress;
 
-
     public EmailVerificationPage(){
         PageFactory.initElements(webDriver, this);
     }
@@ -19,12 +19,11 @@ public class EmailVerificationPage extends BaseClass {
     public String validateEmailAddress(){
         String methodName = "validateEmailAddress method";
         System.out.println(methodName + " Is Called");
-        String newUserEnteredEmailAddress = userEmailAddress.getText();
-        System.out.println(newUserEnteredEmailAddress);
-        return newUserEnteredEmailAddress;
+        return userEmailAddress.getText();
     }
 
-//    public boolean isPageAvailable(){
-//        return Action.isDisplayed(webDriver, userEmailAddress);
-//    }
+    public String validateNewURL() {
+        return webDriver.getCurrentUrl();
+    }
+
 }
