@@ -1,0 +1,53 @@
+package pageObject;
+
+import actionDriver.Action;
+import base.BaseClass;
+import org.checkerframework.checker.index.qual.PolyUpperBound;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPage extends BaseClass {
+
+//input[@name='email'][2] - ===EMAIL===
+//*[@id=\"app-view-container\"]/div[1]/div/div/div/section/div/div/div[2]/form/div[3]/div/div/div/div/div/input - ===PWD===
+//*[@id="root"]/div/div[3]/div/div/section/div/div/div[2]/form/div[4]/div[1]/label/input - ===CHECKBOX===
+//*[@id="app-view-container"]/div[1]/div/div/div/section/div/div/div[2]/form/div[5]/div/button - ===LOGIN BUTTON===
+//@FindBy(xpath = "//input[@type='checkbox']") === checkbox
+//button[@type='submit'][2] === login button
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[2]/div/div/div/div/div/input")
+    WebElement loginEmail;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[3]/div/div/div/div/div/input")
+    WebElement loginPassword;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[5]/div/button")
+    WebElement rememberMeCheckBox;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[5]/div/button")
+    WebElement loginButton;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[6]/div/span[2]")
+    WebElement signUpLink;
+
+    public LoginPage (){
+        PageFactory.initElements(webDriver, this);
+    }
+
+    public HomePage login(String userName, String password) throws InterruptedException {
+        Action.type(loginEmail,userName);
+        Action.type(loginPassword,password);
+        Thread.sleep(5000);
+        Action.click(webDriver,loginButton);
+        return new HomePage();
+    }
+
+    public RegistrationPage clickSignUpLink(){
+        String methodName = "click signUpLink Method";
+        System.out.println(methodName + "Is Called");
+        Action.click(webDriver,signUpLink);
+        return new RegistrationPage();
+    }
+}
