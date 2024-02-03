@@ -71,7 +71,7 @@ public class BaseClass {
 
     @AfterMethod
     public static void tearDown() throws InterruptedException {
-        Thread.sleep(7000);
+        Thread.sleep(2000);
         webDriver.quit();
     }
 }

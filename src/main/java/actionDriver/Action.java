@@ -103,7 +103,7 @@ public class Action extends BaseClass  {
     }
 
     public static void implicitWait(WebDriver webDriver, int timeOut) {
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.MINUTES);
     }
 
     public static void explicitWait(WebDriver webDriver, WebElement element, int timeout) {
@@ -112,7 +112,7 @@ public class Action extends BaseClass  {
     }
 
     public static void pageLoadTimeOut(WebDriver webDriver, int timeOut) {
-        webDriver.manage().timeouts().pageLoadTimeout(timeOut,TimeUnit.SECONDS);
+        webDriver.manage().timeouts().pageLoadTimeout(timeOut,TimeUnit.MINUTES);
 
     }
 

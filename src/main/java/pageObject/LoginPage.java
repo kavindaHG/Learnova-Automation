@@ -33,6 +33,18 @@ public class LoginPage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[1]/div")
     WebElement pageTitle;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[2]/div/div/div/div/span")
+    WebElement emptyUsernameText;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[3]/div/div/div/div/span")
+    WebElement emptyPasswordText;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[2]/div/div/div/div/span")
+    WebElement invalidEmailPatternInputErrorText;
+
+    @FindBy(xpath = "//*[@id=\"1\"]/div[1]/div[2]")
+    WebElement invalidCredentialsToastMessage;
+
     public LoginPage (){
         PageFactory.initElements(webDriver, this);
     }
@@ -49,12 +61,30 @@ public class LoginPage extends BaseClass {
         return pageTitle.getText();
     }
 
-    public StudentMyCoursesPage login(String userName, String password) throws InterruptedException {
+    public String emptyUsernameText(){
+        return emptyUsernameText.getText();
+    }
+
+    public String emptyPasswordText(){
+        return emptyPasswordText.getText();
+    }
+
+    public String invalidCredentialsToastMessageText(){
+        return invalidCredentialsToastMessage.getText();
+    }
+
+    public String invalidEmailPatternText(){
+        return invalidEmailPatternInputErrorText.getText();
+    }
+
+
+
+    public MyCoursesPage login(String userName, String password) throws InterruptedException {
         Action.type(loginEmail, userName);
         Action.type(loginPassword, password);
-        Thread.sleep(3000);
+        Thread.sleep(500);
         Action.click(webDriver, loginButton);
-        return new StudentMyCoursesPage();
+        return new MyCoursesPage();
     }
 
     public RegistrationPage clickSignUpLink(){
