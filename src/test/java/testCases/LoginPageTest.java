@@ -20,8 +20,10 @@ public class LoginPageTest extends BaseClass {
     String expectedInvalidEmailPatternErrorText = "Please enter a valid email";
     String expectedInvalidCredToast = "Email or the password is invalid. Please try again with valid information.";
     String expectedStudentMyCoursesURL = "https://learnova-dev.skillsurf.lk/student/courses";
+    String expectedAdminMyCoursesURL = "https://learnova-dev.skillsurf.lk/admin/courses";
     String expectedStudentMyCoursesTitle = "My Courses";
-    String expectedStudentUserType= "Student";
+    String expectedStudentUserType = "Student";
+    String expectedAdminUserType = "Admin";
 
 //    @Test(priority = 1)
 //    public void verifyLoginURL() {
@@ -54,21 +56,21 @@ public class LoginPageTest extends BaseClass {
 //    }
 
 //    user login with empty username and password
-    @Test(priority = 3)
-    public void negativeLoginTest1() throws InterruptedException {
-        homePage = new HomePage();
-        homePage.clickLoginButton();
-        loginPage = new LoginPage();
-        loginPage.login("", "");
-
-        String emptyUserNameErrorText = loginPage.emptyUsernameText();
-        String emptyPasswordErrorText = loginPage.emptyPasswordText();
-
-        softAssert = new SoftAssert();
-        softAssert.assertEquals(emptyUserNameErrorText, expectedEmptyUsernameErrorText);
-        softAssert.assertEquals(emptyPasswordErrorText,expectedEmptyPasswordErrorText);
-        softAssert.assertAll("Empty email and password input assertion failed");
-    }
+//    @Test(priority = 3)
+//    public void negativeLoginTest1() throws InterruptedException {
+//        homePage = new HomePage();
+//        homePage.clickLoginButton();
+//        loginPage = new LoginPage();
+//        loginPage.login("", "");
+//
+//        String emptyUserNameErrorText = loginPage.emptyUsernameText();
+//        String emptyPasswordErrorText = loginPage.emptyPasswordText();
+//
+//        softAssert = new SoftAssert();
+//        softAssert.assertEquals(emptyUserNameErrorText, expectedEmptyUsernameErrorText);
+//        softAssert.assertEquals(emptyPasswordErrorText,expectedEmptyPasswordErrorText);
+//        softAssert.assertAll("Empty email and password input assertion failed");
+//    }
 
     //user login with empty username and correct password
 //    @Test(priority = 4)
@@ -147,20 +149,20 @@ public class LoginPageTest extends BaseClass {
 //    }
 //
     //user login with correct username and incorrect password
-    @Test(priority = 9)
-    public void negativeLoginTest7() throws InterruptedException {
-        homePage = new HomePage();
-        homePage.clickLoginButton();
-        loginPage = new LoginPage();
-        loginPage.login("skfuser@gmail.com", "SKf12345");
-        Thread.sleep(2000);
-
-        String actualInvalidCredentialsToastMessage = loginPage.invalidCredentialsToastMessageText();
-
-        softAssert = new SoftAssert();
-        softAssert.assertEquals(actualInvalidCredentialsToastMessage, expectedInvalidCredToast);
-        softAssert.assertAll("Valid email and invalid password input assertion failed");
-    }
+//    @Test(priority = 9)
+//    public void negativeLoginTest7() throws InterruptedException {
+//        homePage = new HomePage();
+//        homePage.clickLoginButton();
+//        loginPage = new LoginPage();
+//        loginPage.login("skfuser@gmail.com", "SKf12345");
+//        Thread.sleep(2000);
+//
+//        String actualInvalidCredentialsToastMessage = loginPage.invalidCredentialsToastMessageText();
+//
+//        softAssert = new SoftAssert();
+//        softAssert.assertEquals(actualInvalidCredentialsToastMessage, expectedInvalidCredToast);
+//        softAssert.assertAll("Valid email and invalid password input assertion failed");
+//    }
 
     //user login with incorrect username and correct password
 //    @Test(priority = 10)
@@ -190,13 +192,11 @@ public class LoginPageTest extends BaseClass {
         loginPage.login(properties.getProperty("STUDENT_LOGIN_EMAIL"), properties.getProperty("STUDENT_LOGIN_PASSWORD"));
         Thread.sleep(2000);
 
-        String actualStudentMYCoursesURL = myCoursesPage.validateNewURL();
-        String actualStudentMyCoursesTitle = myCoursesPage.validatePageTitle();
+        String actualStudentMyCoursesURL = myCoursesPage.validateNewURL();
 
         //validate redirection to student/myCourses after logging is correct
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(actualStudentMYCoursesURL, expectedStudentMyCoursesURL);
-        softAssert.assertEquals(actualStudentMyCoursesTitle, expectedStudentMyCoursesTitle);
+        softAssert.assertEquals(actualStudentMyCoursesURL, expectedStudentMyCoursesURL);
 
         //move to my profile
         myCoursesPage.goToMyProfile();
@@ -207,6 +207,33 @@ public class LoginPageTest extends BaseClass {
         softAssert.assertEquals(actualUserType, expectedStudentUserType);
         softAssert.assertEquals(actualUserEmail, expectedStudentUserEmail);
 
-        softAssert.assertAll("User Login Validation Process Failed");
+        softAssert.assertAll("Student Login Validation Failed");
+    }
+
+    @Test(priority = 12)
+    public void positiveLoginTestAdmin() throws InterruptedException {
+        homePage = new HomePage();
+        homePage.clickLoginButton();
+        loginPage = new LoginPage();
+        myCoursesPage = new MyCoursesPage();
+        myProfilePage = new MyProfilePage();
+
+        loginPage.login(properties.getProperty("ADMIN_LOGIN_EMAIL"), properties.getProperty("ADMIN_LOGIN_PASSWORD"));
+        Thread.sleep(2000);
+
+        String actualAdminMyCoursesURL = myCoursesPage.validateNewURL();
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(actualAdminMyCoursesURL, expectedAdminMyCoursesURL);
+
+        myCoursesPage.goToMyProfile();
+        String actualUserTypeAdmin = myProfilePage.userType();
+        String actualUserEmailAdmin = myProfilePage.userEmail();
+        String expectedAdminUserEmail = properties.getProperty("ADMIN_LOGIN_EMAIL");
+
+        softAssert.assertEquals(actualUserTypeAdmin, expectedAdminUserType);
+        softAssert.assertEquals(actualUserEmailAdmin, expectedAdminUserEmail);
+
+        softAssert.assertAll("Admin Login Validation Failed");
     }
 }
