@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage extends BaseClass {
 
     @FindBy(xpath = "(//div[contains(text(),'LOGIN')])[2]")
-    WebElement loginButton;
+    private WebElement loginButton;
 
     public HomePage(){
         PageFactory.initElements(webDriver, this);

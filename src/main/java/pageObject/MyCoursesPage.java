@@ -9,13 +9,13 @@ import org.openqa.selenium.support.PageFactory;
 public class MyCoursesPage extends BaseClass {
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div[1]/div[1]/div/p")
-    WebElement pageTitle;
+    private WebElement pageTitle;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/nav/div/div[2]/div[1]")
-    WebElement myProfileButton;
+    private WebElement myProfileButton;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div[2]/div[1]/div[2]/button")
-    WebElement createCourseButton;
+    private WebElement createCourseButton;
 
     public MyCoursesPage(){
         PageFactory.initElements(webDriver, this);

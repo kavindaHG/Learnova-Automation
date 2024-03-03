@@ -16,34 +16,34 @@ public class LoginPage extends BaseClass {
 //button[@type='submit'][2] === login button
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[2]/div/div/div/div/div/input")
-    WebElement loginEmail;
+    private WebElement loginEmail;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[3]/div/div/div/div/div/input")
-    WebElement loginPassword;
+    private WebElement loginPassword;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[5]/div/button")
-    WebElement rememberMeCheckBox;
+    private WebElement rememberMeCheckBox;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[5]/div/button")
-    WebElement loginButton;
+    private WebElement loginButton;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[6]/div/span[2]")
-    WebElement signUpLink;
+    private WebElement signUpLink;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[1]/div")
-    WebElement pageTitle;
+    private WebElement pageTitle;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[2]/div/div/div/div/span")
-    WebElement emptyUsernameText;
+    private WebElement emptyUsernameText;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[3]/div/div/div/div/span")
-    WebElement emptyPasswordText;
+    private WebElement emptyPasswordText;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[2]/div/div/div/div/span")
-    WebElement invalidEmailPatternInputErrorText;
+    private WebElement invalidEmailPatternInputErrorText;
 
     @FindBy(xpath = "//*[@id=\"1\"]/div[1]/div[2]")
-    WebElement invalidCredentialsToastMessage;
+    private WebElement invalidCredentialsToastMessage;
 
     public LoginPage (){
         PageFactory.initElements(webDriver, this);

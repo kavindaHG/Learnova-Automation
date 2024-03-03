@@ -11,55 +11,55 @@ import org.testng.asserts.SoftAssert;
 public class CreateCoursePage extends BaseClass {
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[2]/div/div/div/div/div/div[1]/div[2]")
-    WebElement courseMode;
+    private WebElement courseMode;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[3]/div/div/div/div/div/input")
-    WebElement courseName;
+    private WebElement courseName;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[4]/div[1]/div/div/div/div/div[1]/div[2]")
-    WebElement courseType;
+    private WebElement courseType;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[4]/div[2]/div/div/div/div/div[1]/div[2]")
-    WebElement difficulty;
+    private WebElement difficulty;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[5]/div/div/div/div/div/textarea")
-    WebElement description;
+    private WebElement description;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[6]/div[1]/div/div/div/div/div[1]/div[2]")
-    WebElement specialization;
+    private WebElement specialization;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[6]/div[2]/div/div/div/div/input")
-    WebElement googleFormLink;
+    private WebElement googleFormLink;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[7]/div[1]/div[2]/div/div/div/div/div[2]/div[2]/span")
-    WebElement coverImage;
+    private WebElement coverImage;
 
 //    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[7]/div[2]/div[2]/div/div/div/div/div[2]/div[2]/span")
 //    WebElement bannerImage;
 
     @FindBy(xpath = "//*[@id=\"tinymce\"]")
-    WebElement classSchedule;
+    private WebElement classSchedule;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[13]/div/div/div/div/div[2]/div[1]/div[1]/div/input")
-    WebElement outline1;
+    private  WebElement outline1;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[13]/div/div/div/div/div[2]/div[1]/div[2]/div/input")
-    WebElement outlineDescription1;
+    private WebElement outlineDescription1;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[13]/div/div/div/div/div[2]/div[2]/div/button/div/div")
-    WebElement addOutlineButton;
+    private WebElement addOutlineButton;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[14]/div/div/div/div/div[2]/div[1]/div[1]/div/input")
-    WebElement expertName;
+    private WebElement expertName;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[14]/div/div/div/div/div[2]/div[1]/div[2]/div/input")
-    WebElement expertDesignation;
+    private WebElement expertDesignation;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div/div/form/div[14]/div/div/div/div/div[2]/div[1]/div[3]/div/div/div[2]/div[2]/span")
-    WebElement addExpertImageButton;
+    private WebElement addExpertImageButton;
 
     @FindBy(xpath = "//*[@id=\"price\"]")
-    WebElement basePrice;
+    private WebElement basePrice;
 
     public CreateCoursePage() {
         PageFactory.initElements(webDriver, this);

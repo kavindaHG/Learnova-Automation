@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class EmailVerificationPage extends BaseClass {
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/div[2]/div/span/span")
-    WebElement userEmailAddress;
+    private WebElement userEmailAddress;
 
     public EmailVerificationPage(){
         PageFactory.initElements(webDriver, this);

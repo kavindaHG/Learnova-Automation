@@ -9,28 +9,28 @@ import org.openqa.selenium.support.PageFactory;
 public class RegistrationPage extends BaseClass {
 
     @FindBy(xpath = "/html/body/div/div/div[3]/div/div/section/div/div/div[2]/form/div[1]/div/div/div/div/div/input")
-    WebElement firstName;
+    private WebElement firstName;
 
     @FindBy(xpath = "/html/body/div/div/div[3]/div/div/section/div/div/div[2]/form/div[2]/div/div/div/div/div/input")
-    WebElement lastName;
+    private WebElement lastName;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[3]/div/div/div/div/div/input")
-    WebElement emailAddress;
+    private WebElement emailAddress;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[4]/div/div/div/div/div/input")
-    WebElement password;
+    private WebElement password;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[5]/div/div/div/div/div/input")
-    WebElement confirmPassword;
+    private WebElement confirmPassword;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[6]/div/label/span[2]")
-    WebElement agreementCheckbox;
+    private  WebElement agreementCheckbox;
 
     @FindBy(xpath="//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/form/div[7]/div/button/div")
-    WebElement registerButton;
+    private WebElement registerButton;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/div/section/div/div/div[2]/div/div")
-    WebElement pageTitle;
+    private WebElement pageTitle;
 
     public RegistrationPage(){
         PageFactory.initElements(webDriver, this);
