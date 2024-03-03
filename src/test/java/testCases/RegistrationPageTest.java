@@ -69,7 +69,8 @@ public class RegistrationPageTest extends BaseClass {
         loginPage.clickSignUpLink();
         registrationPage.registrationFormFillAndEmailVerification(
                 userFirstName, userLastName, expectedEmailAddress, password, confirmPassword);
-        Thread.sleep(5000);
+        Thread.sleep(2000);
+        System.out.println(userFirstName);
 
         String actualEmailVerificationURL = emailVerificationPage.validateNewURL();
         String expectedEmailVerificationURL = "https://learnova-dev.skillsurf.lk/verify-email";

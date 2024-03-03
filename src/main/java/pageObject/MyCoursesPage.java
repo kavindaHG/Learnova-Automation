@@ -14,6 +14,9 @@ public class MyCoursesPage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/nav/div/div[2]/div[1]")
     WebElement myProfileButton;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[3]/div/section/div[2]/div[2]/div[1]/div[2]/button")
+    WebElement createCourseButton;
+
     public MyCoursesPage(){
         PageFactory.initElements(webDriver, this);
     }
@@ -36,5 +39,12 @@ public class MyCoursesPage extends BaseClass {
         System.out.println(methodName + " Is Called");
         Action.click(webDriver, myProfileButton);
         return new MyProfilePage();
+    }
+
+    public CreateCoursePage clickCreateCourseButton(){
+        String methodName = "clickCreateCourseButton";
+        System.out.println(methodName + "Is Called");
+        Action.click(webDriver,createCourseButton);
+        return new CreateCoursePage();
     }
 }
