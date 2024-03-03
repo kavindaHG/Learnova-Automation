@@ -210,6 +210,9 @@ public class LoginPageTest extends BaseClass {
         softAssert.assertAll("Student Login Validation Failed");
     }
 
+
+
+    //login as admin
     @Test(priority = 12)
     public void positiveLoginTestAdmin() throws InterruptedException {
         homePage = new HomePage();
